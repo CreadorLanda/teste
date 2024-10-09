@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Angola</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Estilos da Navbar */
+    .navbar {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    /* Seção de Boas-Vindas */
+    .welcome-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 50px;
+      background-color: #fff;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    .welcome-text {
+      max-width: 50%;
+    }
+
+    .welcome-text h1 {
+      font-size: 50px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .welcome-text p {
+      font-size: 16px;
+      color: #777;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    /* Botões */
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .buttons button {
+      padding: 15px 30px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-primary {
+      background-color: black;
+      color: white;
+    }
+
+    .btn-secondary {
+      background-color: white;
+      color: black;
+      border: 2px solid black;
+    }
+
+    /* Efeito Hover nos Botões */
+    .buttons button:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    /* Imagem */
+    .welcome-image img {
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
+    /* Efeito Hover nas Imagens */
+    .welcome-image img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Seção Geral */
+    section {
+      padding: 50px;
+      background-color: #fff;
+      margin-top: 30px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    /* Seção de Projetos */
+    .projects {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .project {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 30%;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .project img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    /* Efeito Hover nos Projetos */
+    .project:hover {
+      transform: translateY(-10px);
+    }
+
+    .project img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Seção de Parceiros e Patrocinadores */
+    .partners, .sponsors {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .partner, .sponsor {
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      width: 20%;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .partner img, .sponsor img {
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
+    /* Efeito Hover nos Parceiros e Patrocinadores */
+    .partner:hover, .sponsor:hover {
+      transform: translateY(-10px);
+    }
+
+    .partner img:hover, .sponsor img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Seção Sobre Nós */
+    .about-section {
+      background-color: #f2f2f2;
+      padding: 50px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    .about-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-text h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .welcome-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .welcome-text {
+        max-width: 100%;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .buttons button {
+        width: 100%;
+      }
+
+      .welcome-image {
+        margin-top: 30px;
+      }
+
+      .project, .partner, .sponsor {
+        width: 100%;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .footer-section p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .footer-section a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer-section a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social a {
+      color: white;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: #f2f2f2;
+    }
+
+    .button_know {
+      padding: 15px 30px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      background-color: white;
+      color: black;
+      border: 2px solid black;
+    }
+
+    .button_know:hover {
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Serviço</a>
+      <a href="#">Sobre Nós</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <!-- Seção de Boas-Vindas -->
+  <section class="welcome-section">
+    <div class="welcome-text">
+      <h1>Bem-vindo</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+      <div class="buttons">
+        <button class="btn-primary">Começar</button>
+        <button class="btn-secondary">Saiba Mais</button>
+      </div>
+    </div>
+
+    <!-- Imagem ao lado direito -->
+    <div class="welcome-image">
+      <img src="img/logo.png" alt="Imagem de Boas-Vindas">
+    </div>
+  </section>
+
+  <!-- Seção Sobre Nós -->
+  <section class="about-section">
+    <div class="about-text">
+      <h2>Sobre Nós</h2>
+      <p>Somos uma equipe dedicada a fornecer soluções inovadoras e serviços excepcionais para nossos clientes. Nosso compromisso é promover o desenvolvimento sustentável, liderando iniciativas em várias áreas, desde tecnologia até desenvolvimento social. Nossos valores centrais são inovação, qualidade e integridade.</p>
+    </div>
+  </section>
+
+  <!-- Seção de Projetos -->
+  <section>
+    <h2>Nossos Projetos</h2>
+    <div class="projects">
+      <div class="project">
+        <img src="img/learn-logo.jpeg" alt="Imagem do Projeto 1">
+        <h3>Projeto 1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Parceiros -->
+  <section>
+    <h2>Nossos Parceiros</h2>
+    <div class="partners">
+      <div class="partner">
+        <img src="img/partner1.png" alt="Parceiro 1">
+      </div>
+      <div class="partner">
+        <img src="img/partner2.png" alt="Parceiro 2">
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Patrocinadores -->
+  <section>
+    <h2>Nossos Patrocinadores</h2>
+    <div class="sponsors">
+      <div class="sponsor">
+        <img src="img/sponsor1.png" alt="Patrocinador 1">
+      </div>
+      <div class="sponsor">
+        <img src="img/sponsor2.png" alt="Patrocinador 2">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-section">
+      <h3>Contato</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Links Úteis</h3>
+      <a href="#">Início</a>
+      <a href="#">Serviço</a>
+      <a href="#">Sobre Nós</a>
+      <a href="#">Contato</a>
+    </div>
+
+    <div class="footer-section">
+      <h3>Redes Sociais</h3>
+      <div class="footer-social">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript para animação de scroll suave -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sections = document.querySelectorAll('section');
+      const navbarLinks = document.querySelectorAll('.navbar a');
+
+      const options = {
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, options);
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+
+      navbarLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const targetId = event.currentTarget.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          window.scrollTo({
+            top: targetSection.offsetTop,
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
